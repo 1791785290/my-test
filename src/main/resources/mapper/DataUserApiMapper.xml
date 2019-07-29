@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.data.mapper.DataUserApiMapper" >
+
+    <select id="showPwd" resultType="String">
+    select password from users where (name = #{username} or username = #{username} or email = #{username})
+  </select>
+
+    <update id="updatePwd">
+    update users set password = #{password} where username = #{username}
+  </update>
+
+    <select id="selectName" resultType="String">
+    select name,username,email from users where username = #{username}
+  </select>
+
+  <select id="showName" resultType="String">
+     select username from users where username = #{username}
+  </select>
+
+    <select id="gridshow" resultType="map">
+    select * from grids
+  </select>
+
+  <select id="selectProName" resultType="String">
+    select project_name from project where project_name = #{project_name}
+  </select>
+
+  <insert id="importProject">
+    insert into project (project_name,city_name,type,project_time,username,gnote,area)
+    values(#{project_name},#{city_name},#{type},#{project_time},#{username},#{lt},#{area})
+  </insert>
+
+  <select id="exportProject" resultType="map">
+    select * from project where project_name = #{project_name}
+  </select>
+
+  <select id="projectInfoPoint" resultType="map">
+    select * from point where project_name = #{project_name}
+  </select>
+
+  <select id="projectInfo" resultType="map">
+    select project_name from project;
+  </select>
+
+    <insert id="pointed">
+        INSERT INTO point
+        values (#{project_name},#{point_lon},#{point_lat},#{point_describe},now());
+  </insert>
+
+
+  <select id="selectEmail" resultType="String">
+    select email from users where username = #{username};
+  </select>
+</mapper>

@@ -1,0 +1,23 @@
+server:
+  port: 8088
+spring:
+  datasource:
+    name: mysql
+    url: jdbc:mysql://cdb-7fazeuys.bj.tencentcdb.com:10106/expmapdb?useSSL=false&characterEncoding=utf8&serverTimezone=GMT%2B8
+    username: mapusr
+    password: Password1$
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+
+#log打印sql
+logging:
+  level:
+    com:
+      example:
+        data:
+          mapper: debug
+
+#banner图
+spring.banner:location: ["classpath:banner.txt", "file:./banner.txt"]
